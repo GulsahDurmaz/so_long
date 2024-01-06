@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 09:44:39 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 17:06:45 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/05 02:00:32 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_map
 	size_t	exit_x;
 	size_t	exit_y;
 	size_t	steps;
+	size_t	time;
 }		t_map;
 
 typedef struct s_sprites
@@ -88,6 +89,7 @@ typedef struct s_sprites
 	void	*exit_closed;
 	void	*exit_open;
 	void	*enemy;
+	void	*bomb;
 }		t_sprites;
 
 typedef struct s_mlx
@@ -140,5 +142,6 @@ void	write_error(char *str);
 int		check_next_tile(t_game *game, int x, int y);
 int		gamex(t_game *game);
 int		key_pressed(int key, t_game *game);
+void	put_string(t_game *game);
 
 #endif
