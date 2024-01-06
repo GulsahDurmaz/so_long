@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_values.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 08:45:34 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 17:07:54 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/05 02:00:58 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ t_game	*map_values(char **map_arr)
 	game->map.exit_x = get_position(game, 'x', 'E');
 	game->map.exit_y = get_position(game, 'y', 'E');
 	game->map.collected = 0;
+	game->map.time = 0;
 	return (game);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 22:09:46 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 13:12:34 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/04 21:36:30 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	destroy(t_game *root)
 	if (root->mlx.window)
 		mlx_destroy_window(root->mlx.ptr, root->mlx.window);
 	if (root->mlx.ptr)
-		mlx_destroy_display(root->mlx.ptr);
+		// mlx_destroy_display(root->mlx.ptr);
 	if (root->mlx.ptr)
 		free(root->mlx.ptr);
 	exit(0);

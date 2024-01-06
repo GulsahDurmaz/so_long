@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 10:25:07 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 13:11:15 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/05 01:58:18 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_sprites(t_game *game)
 {
 	int	x;
 	int	y;
-
+	
 	game->sprites.floor = mlx_xpm_file_to_image(game->mlx.ptr, \
 		"./images/floor.xpm", &x, &y);
 	game->sprites.wall = mlx_xpm_file_to_image(game->mlx.ptr, \
@@ -38,4 +38,6 @@ void	init_sprites(t_game *game)
 		"./images/exit_closed.xpm", &x, &y);
 	game->sprites.exit_open = mlx_xpm_file_to_image(game->mlx.ptr, \
 		"./images/exit_open.xpm", &x, &y);
+	game->sprites.bomb = mlx_xpm_file_to_image(game->mlx.ptr, \
+		"./images/bomb.xpm", &x, &y);
 }

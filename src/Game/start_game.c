@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   start_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 11:48:59 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 18:36:54 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/05 00:03:15 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-char	*put_string(t_game *game)
-{
-	char	*str;
-	char	*tmp;
+// char	*put_string(t_game *game)
+// {
+// 	char	*str;
+// 	char	*tmp;
 
-	tmp = ft_itoa(game->map.collected);
-	str = ft_strjoin("Collected: ", tmp);
-	return (str);
+// 	tmp = ft_itoa(game->map.collected);
+// 	str = ft_strjoin("Collected: ", tmp);
+// 	return (str);
+// }
+
+void	put_string(t_game *game)
+{
+	char	*collected;
+
+	collected = ft_itoa(game->map.collected);
+	mlx_string_put(game->mlx.ptr, game->mlx.window, SIZE, 15, 0xcddc39, "Collected: ");
+	mlx_string_put(game->mlx.ptr, game->mlx.window, SIZE * 3, 15, 0xcddc39, collected);
+	free(collected);
+	return ;
 }
 
 void	move_player(t_game *game, int x, int y)
@@ -28,10 +39,8 @@ void	move_player(t_game *game, int x, int y)
 	{
 		game->map.map_array[y][x] = '0';
 		game->map.collected++;
-		mlx_put_image_to_window(game->mlx.ptr, \
-			game->mlx.window, game->sprites.wall, SIZE * 2, 0);
-		mlx_string_put(game->mlx.ptr, game->mlx.window, \
-			SIZE, SIZE / 2, 0xcddc39, put_string(game));
+		put_string(game);
+		
 	}
 	if (game->map.collected == game->map.collectibles)
 	{

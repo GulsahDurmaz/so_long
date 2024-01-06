@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gdurmaz <gdurmaz@42.fr>                    +#+  +:+       +#+        */
+/*   By: gdurmaz <gdurmaz@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 11:55:23 by maricard          #+#    #+#             */
-/*   Updated: 2024/01/04 18:19:26 by gdurmaz          ###   ########.fr       */
+/*   Updated: 2024/01/05 02:10:39 by gdurmaz          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,43 @@ void	draw_map(t_game *game)
 	}
 	game->map.curr_x = game->map.player_x;
 	game->map.curr_y = game->map.player_y;
-	mlx_string_put(game->mlx.ptr, game->mlx.window, \
-			SIZE, SIZE / 2, 0xcddc39, "Collected: 0");
+	put_string(game);
+}
+
+int	ft_loop_function(t_game *game)
+{
+	static int	x = 1;
+
+	while (++x < 500)
+		return (0);
+	mlx_put_image_to_window(game->mlx.ptr, 
+		game->mlx.window, game->sprites.bomb, 0, game->map.time++);
+	if (game->map.time >= game->map.height * SIZE)
+	{ 
+		ft_printf("steps: %d\n", game->map.steps);
+		ft_printf("---------\n Time is up! YOU LOST\n");
+		destroy(game);
+	}
+	x = 0;
+	return (1);
+	// sleep(5);
+	// mlx_put_image_to_window(game->mlx.ptr, 
+	// 	game->mlx.window, game->sprites.enemy, SIZE, SIZE);
+	// return (1);
 }
 
 int	gamex(t_game *game)
 {
 	draw_map(game);
 	mlx_hook(game->mlx.window, 2, (1L << 0), key_pressed, game);
+	// game->mlx.loop_param = 123;
+	
+	// mlx_loop_hook(game->mlx.ptr, sample_function, (void *)123);
+	mlx_loop_hook(game->mlx.ptr, ft_loop_function, game);
+    // my_game yapısının loop_hook ve loop_param değerlerini kullanarak sample_function'ı çağır
+    // int result = game->mlx.loop_hook(game->mlx.loop_param);
 	mlx_hook(game->mlx.window, 17, (1L << 2), close_game, game);
 	mlx_loop(game->mlx.ptr);
 	return (0);
 }
+
